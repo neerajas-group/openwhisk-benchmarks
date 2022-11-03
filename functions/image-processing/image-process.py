@@ -31,19 +31,11 @@ def resize(image):
     return img
 
 def main(params):
-    if (len(sys.argv) != 6):
-        print("Usage: python3 image-process.py <endpoint> <access key> <secret key> <bucket> <image>")
-        return
-    print(params)
+
     endpoint = params['endpoint']
     access_key = params['access_key']
     secret_key = params['secret_key']
     bucket = params['bucket']
-    
-    # endpoint = sys.argv[1]
-    # access_key = sys.argv[2]
-    # secret_key = sys.argv[3]
-    # bucket = sys.argv[4]
 
     minio_client = Minio(endpoint=endpoint,
                      access_key=access_key,
@@ -75,8 +67,5 @@ def main(params):
     lat = time() - start
 
     ret_val = {}
-    ret_val['latency'] = lat
+    ret_val["latency"] = lat
     return ret_val
-
-if __name__=="__main__":
-    main(params)

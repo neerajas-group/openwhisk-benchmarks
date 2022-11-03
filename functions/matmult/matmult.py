@@ -15,5 +15,5 @@ def main(params):
     N = params['N']
     latency = matmul(N)
     ret_val = {}
-    ret_val['latency'] = latency
+    ret_val["latency"] = latency
     return ret_val
