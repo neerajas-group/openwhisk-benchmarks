@@ -47,3 +47,6 @@ tornado == 4.5.2
 
 # MinIo to mock object store
 minio
+
+# pyaes
+pyaes

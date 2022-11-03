@@ -15,7 +15,7 @@ $ docker tag python3-ow psinha25/python3-ow
 ```
 - Push the Docker image to Docker Hub
 ```console
-$ docker push psinha25/pyhon3-ow
+$ docker push psinha25/python3-ow
 ```
 
 Note that you might run into a the following issue upon trying to push:

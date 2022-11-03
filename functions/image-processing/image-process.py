@@ -31,7 +31,7 @@ def resize(image):
     return img
 
 def main(params):
-
+    
     endpoint = params['endpoint']
     access_key = params['access_key']
     secret_key = params['secret_key']
@@ -46,7 +46,6 @@ def main(params):
         print("Bucket '%s' does not exist" %bucket)
     
     image_name = params['image']
-    # image_name = sys.argv[5]
     image_path = '/tmp/' + image_name
 
     minio_client.fget_object(bucket_name=bucket,
