@@ -15,3 +15,16 @@ $ wsk action invoke image_process -i -p endpoint "10.52.2.166:9002" -p access_ke
 ```console
 $ wsk action create encrypt encrypt.py --docker psinha25/python3-ow --web raw --memory 512 -i
 $ wsk action invoke encrypt -i -p length 10 -p iteration 10 -r -v
+```
+
+- linpack
+```console
+$ wsk action create linpack linpack.py --docker psinha25/python3-ow --web raw --memory 512 -i
+$ wsk action invoke linpack -i -p N 10 -r -v
+```
+
+- mobilenet
+```console
+$ wsk action create mobilenet mobilenet.py --docker psinha25/mobilenet-ow --web raw --memory 512
+$ wsk action invoke mobilenet -i -p endpoint "10.52.2.166:9002" -p access_key "testkey" -p secret_key "testsecret" -p bucket "openwhisk" -p image "mj.jpg" -r -v
+```
