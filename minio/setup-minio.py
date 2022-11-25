@@ -8,7 +8,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--minio-config', dest='minio_config', type=str, required=True)
-data_top_dir =  Path.cwd() / '..' / 'openwhisk-minio-data'
+data_top_dir =  Path.cwd() / '..' / 'minio-data'
 image_dir = data_top_dir / 'image-process'
 # video_dir = data_top_dir / 'video-process'
 print(data_top_dir)
