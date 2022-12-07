@@ -22,7 +22,6 @@ def linpack(N):
     mflops = (ops*1e-6/latency)
 
     result = {
-        'mflops': mflops,
         'latency': latency
     }
 
