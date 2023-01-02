@@ -15,7 +15,7 @@ wsk -i action create encrypt encrypt.py \
     --web raw \
     --memory 1024 --cpu 5 \
     --param length 5000 \
-    --param iteration 30 \
+    --param iteration 30
 
 # Register Matmult 
 cd /home/cc/openwhisk-benchmarks/functions/matmult
@@ -23,7 +23,7 @@ wsk -i action create matmult matmult.py \
     --docker psinha25/python3-ow \
     --web raw \
     --memory 1024 --cpu 5 \
-    --param N 3000 \
+    --param N 3000
 
 # Register Linpack
 cd /home/cc/openwhisk-benchmarks/functions/linpack
@@ -31,7 +31,7 @@ wsk -i action create linpack linpack.py \
     --docker psinha25/python3-ow \
     --web raw \
     --memory 1024 --cpu 5 \
-    --param N 2000 \
+    --param N 2000
 
 # Setup Minio Images
 cd /home/cc/openwhisk-benchmarks/minio
@@ -44,8 +44,8 @@ wsk -i action create image-process image-process.py \
     --docker psinha25/python3-ow \
     --web raw \
     --memory 1024 --cpu 5 \
-    --param endpoint "10.52.3.213:9002" \
+    --param endpoint "10.52.2.243:9002" \
     --param access_key "testkey" \
     --param secret_key "testsecret" \
     --param bucket "openwhisk" \
-    --param image "2.4M-building.jpg" \
+    --param image "2.4M-building.jpg"

@@ -54,4 +54,4 @@ df['mem_util'] = mem_util
 print(df.to_string())
 print(len(df))
 
-df.to_csv("./matmult-data.csv", index=False)
+df.to_csv("./matmult-data-no-load.csv", index=False)

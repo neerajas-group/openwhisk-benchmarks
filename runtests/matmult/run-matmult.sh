@@ -12,7 +12,7 @@ cd ~/openwhisk-benchmarks/functions/matmult
 CPU=$1
 MEM=$2
 MAT_SIZE=$3
-MACHINE="129.114.109.253"
+INVOKER="129.114.108.74"
 
 # Register matrix multiplication function with our OpenWhisk setup
 echo "Experiment Setup:"
@@ -42,7 +42,7 @@ echo "Experiment Begins:"
 echo "------------------"
 for size in $MAT_SIZE; do 
     echo "MATRIX SIZE: $size"
-    STATS_PID=$(ssh $MACHINE " python3 -u ~/stats-collector.py >> docker-stats-$CPU-$MEM-$MAT_SIZE-${FXN}.txt & jobs -p")
+    STATS_PID=$(ssh $INVOKER " python3 -u ~/stats-collector.py >> docker-stats-$CPU-$MEM-$MAT_SIZE-${FXN}.txt & jobs -p")
     
     # Do 10 runs per matrix
     for run in {1..10} ; do
@@ -56,19 +56,19 @@ for size in $MAT_SIZE; do
         echo "latency: $LATENCY"
 
         # Collect max memory usage
-        CONTAINER_LINE=$(ssh $MACHINE " docker ps --no-trunc | grep main-python ")
+        CONTAINER_LINE=$(ssh $INVOKER " docker ps --no-trunc | grep main-python ")
         C_LINE=($CONTAINER_LINE)
         CONTAINER_ID=${C_LINE[0]}
-        MAX_MEM=$(ssh $MACHINE "cat /sys/fs/cgroup/memory/docker/$CONTAINER_ID/memory.max_usage_in_bytes")
+        MAX_MEM=$(ssh $INVOKER "cat /sys/fs/cgroup/memory/docker/$CONTAINER_ID/memory.max_usage_in_bytes")
         echo "max_mem: $MAX_MEM"
         sleep 5
 
     done
 
-    # STATS_PID=$(ssh $MACHINE " ps -aux | grep \"python3 ~/stats-collector.py\" | cut -d ' ' -f8 ")
-    ssh $MACHINE " kill $STATS_PID "
+    # STATS_PID=$(ssh $INVOKER " ps -aux | grep \"python3 ~/stats-collector.py\" | cut -d ' ' -f8 ")
+    ssh $INVOKER " kill $STATS_PID "
 
 done
 
 # Stop all containers created FaasProfiler & the container of interest
-ssh $MACHINE " docker ps | grep psinha25 | cut -d ' ' -f1 | xargs -I {} docker stop -t 1 {} "
+ssh $INVOKER " docker ps | grep psinha25 | cut -d ' ' -f1 | xargs -I {} docker stop -t 1 {} "

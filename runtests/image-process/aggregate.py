@@ -35,7 +35,7 @@ for file in os.listdir(directory):
                     mem_megabytes = mem_bytes / (2**20)
                     mem_usage.append(mem_megabytes)
                     mem_util.append((mem_megabytes / 2048) * 100)
-                    benchmark.append(curr_benchmark)
+                    benchmark.append("imageprocess")
                     cpu_lim.append(lim_cpu)
                     mem_lim.append(lim_mem)
                     data_size.append(size)
@@ -53,6 +53,5 @@ df['mem_usage'] = mem_usage
 df['mem_util'] = mem_util
 print(df.to_string())
 print(len(df))
-df.to_csv("image-process-data.csv", index=False)
 
-# df.to_csv("./matmult-data.csv", index=False)
+df.to_csv("imageprocess-data-no-load.csv", index=False)

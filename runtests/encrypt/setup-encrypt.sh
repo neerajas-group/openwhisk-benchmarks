@@ -35,7 +35,7 @@ wsk -i action create image_process image-process.py \
     --docker psinha25/python3-ow \
     --web raw \
     --memory 1024 --cpu 5 \
-    --param endpoint "10.52.3.213:9002" \
+    --param endpoint "10.52.2.243:9002" \
     --param access_key "testkey" \
     --param secret_key "testsecret" \
     --param bucket "openwhisk" \
@@ -47,7 +47,7 @@ wsk -i action create mobilenet mobilenet.py \
     --docker psinha25/mobilenet-ow \
     --web raw \
     --memory 1024 --cpu 5 \
-    --param endpoint "10.52.3.213:9002" \
+    --param endpoint "10.52.2.243:9002" \
     --param access_key "testkey" \
     --param secret_key "testsecret" \
     --param bucket "openwhisk" \
